@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>reveal.js</title>
+        <title>Assembling forest tree genomes: are we there yet?</title>
 
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/maehler_dark.css">
@@ -35,10 +35,318 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <h1>Slide 1</h1>
+                    <h2>Assembly of forest tree genomes: are we there yet?</h2>
+                    <p>Niklas Mähler</p>
+                    <p>UPSC seminar <time datetime="2020-03-02T09:30:00">2020-03-02</time></p>
                 </section>
+
                 <section>
-                    <h1>Slide 2</h1>
+                    <section>
+                        <h2>What is genome assembly?</h2>
+                    </section>
+
+                    <section>
+                        <p>Recreating a genome sequence from short fragments</p>
+                        <img src="http://dna.cs.byu.edu/bio465/puzzle.png" alt="Genome assembly is a complex puzzle">
+                        <aside class="notest">
+                            <p>
+                            How these short fragments are obtained has changed over time, and the last 10-15 years there have been tremendous advancements in this area.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Data</h2>
+                        <div style="display: flex; align-items: center;">
+                            <div style="transform: rotate(270deg);">
+                                <p>Time</p>
+                            </div>
+                            <div>
+                                <svg width="12" height="500" viewBox="0 0 10 500" xlmns="http://www.w3.org/2000/svg">
+                                    <line x1="5" y1="0" x2="5" y2="500" stroke="white" stroke-width=2 />
+                                    <line x1="5" y1="500" x2="10" y2="490" stroke="white" stroke-width=2 />
+                                    <line x1="5" y1="500" x2="0" y2="490" stroke="white" stroke-width=2 />
+                                </svg>
+                            </div>
+                            <div class="small">
+                                <dl>
+                                    <dt>Sanger sequencing</dt>
+                                    <dd>long reads, high accuracy, low throughput</dd>
+
+                                    <dt>Illumina sequencing</dt>
+                                    <dd>short reads, high accuracy, high throughput</dd>
+
+                                    <dt>PacBio SMRT sequencing</dt>
+                                    <dd>long reads, lower accuracy, high throughput</dd>
+
+                                    <dt>Nanopore sequencing</dt>
+                                    <dd>longer reads, lower accuracy, high throughput</dd>
+
+                                    <dt>PacBio HiFi sequencing</dt>
+                                    <dd>long reads, high accuracy, high throughput</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <aside class="notes">
+                            <p>
+                            In order to assemble anything, we need data.
+                            In the sequencing time that we're living in, we have seen a lot of technologies come and go.
+                            Here I list some of them, in chronological order.
+                            </p>
+                            <ul>
+                                <li>Sanger: Frederick Sanger developed in the 70s, Nobel prize in 1980. First generation sequencing.</li>
+                                <li>Illumina sequencing: technology developed in mid 90s &rarr; Solexa &rarr; Illumina. Second, or next generation sequencing.</li>
+                                <li>PacBio: Single molecule real-time sequencing, commercialised in 2011. Third generation sequencing.</li>
+                                <li>Nanopore: </li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <p>Figure showing how you go from reads &rarr; contigs &rarr; scaffolds</p>
+                        <aside class="notes">
+                            <p>How this is done in practice I will leave out for now</p>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The genomes we are working on</h2>
+                    </section>
+
+                    <section>
+                        <h2><i>Populus tremula</i> v2</h2>
+                        <div style="display: flex; align-items: center;">
+                            <figure style="width: 30%">
+                                <img src="img/campus_aspen.jpg" alt="Populus tremula (European aspen)">
+                                <figcaption>Photo: Stefan Jansson</figcaption>
+                            </figure>
+                            <div>
+                                <ul>
+                                    <li>European aspen</li>
+                                    <li>450 Mbp</li>
+                                    <li>Diploid</li>
+                                    <li>19 chromosomes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2><i>Picea abies</i> v2</h2>
+                        <div style="display: flex; align-items: center;">
+                            <img style="width: 30%" src="img/z4006.jpg" alt="Picea abies (Norway spruce)">
+                            <div>
+                                <ul>
+                                    <li>Norway spruce</li>
+                                    <li>20 Gbp</li>
+                                    <li>Diploid</li>
+                                    <li>12 chromosomes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2><i>Pinus sylvestris</i> v1</h2>
+                        <div style="display: flex; align-items: center;">
+                            <figure style="width: 30%;">
+                                <img src="img/pinus_sylvestris.jpg" alt="Pinus sylvestris (Scots pine)">
+                                <figcaption>Photo: <a href="https://www.flickr.com/photos/74738817@N07/28360519966/in/photolist-Kd85wb-KZhyWM-PJaiJL-N1k8U6-MQF5Cx-MWyYM5-23zZd6r-M33VSr-MVcX8b-24TmJKY-KgNVvW-H1E4DB-Kd87zj-PxnX7Q-21ya6e8-Ys3WdA-LdBn1D-28fNyyJ-24TmKrN-Z29hV6-25z8puS-BV6BbG-26w89Uh-GVRfbB-GVRhDH-XZUj9H-25dffKa-Dyeet9-D3WYfn-CtiB-DS6j2M-DPVbPd-MK6XNM-bkBq7U-LR5c5L-D3BSCQ-ruCxnx-D3BEmA-YuYJKr-XebvPL-4sv2AR-rqngK8-x9S48M-XebwRW-7oGhhC-VX8AbY-myjSaf-myhZwz-myikJr-gfiopM">Andreas Rockstein</a></figcaption>
+                            </figure>
+                            <ul>
+                                <li>Scots pine</li>
+                                <li>22 Gbp</li>
+                                <li>Diploid</li>
+                                <li>12 chromosomes</li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why reassemble existing genomes?</h3>
+                        <dl>
+                            <dt class="fragment" data-fragment-index="1">Advances in sequencing</dt>
+                            <dd class="fragment" data-fragment-index="1">Makes new things possible/cheaper</dd>
+
+                            <dt class="fragment" data-fragment-index="2">Advances in computation</dt>
+                            <dd class="fragment" data-fragment-index="2">Better hardware and new algorithms</dd>
+
+                            <dt class="fragment" data-fragment-index="3">We're curious</dt>
+                            <dd class="fragment" data-fragment-index="3">The current genomes just aren't good enough</dd>
+                        </dl>
+                        <aside class="notes">
+                            <ul>
+                                <li>Fragmented gene space</li>
+                                <li>Missing regions</li>
+                                <li>Low contiguity</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <p>
+                        Especially conifers are of great importance, both economically and ecologically.
+                        </p>
+                    </section>
+
+                    <section data-background-image="img/gudrun_logs.png"
+                             data-background-size="contain"
+                             data-background-color="#000000">
+                        <aside class="notes">
+                            <p>
+                            After the storm Gudrun in 2004. This is the old military airstrip in Byholma, Småland. In the picture there is about 1 million m<sup>3</sup> of wood, and this is rougly equivalent to the biomass production in Swedish forests in one day.
+                            </p>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <p>
+                        What can we expect from an improved assembly?
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Potra01</h3>
+                        <p>Here a sad Manhattan plot should reside</p>
+                    </section>
+
+                    <section data-background-color="#FFFFFF">
+                        <h3>Potra02</h3>
+                        <figure>
+                            <img src="img/umasp_sex_gwas_v2.png" alt="UmAsp sex GWAS">
+                        </figure>
+                        <aside class="notes">
+                            <p>Here we can take an example from aspen since we have two versions that we can compare.</p>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Where do we aim?</h3>
+                    </section>
+
+                    <section data-background-color="#FFFFFF">
+                        <figure class="stretch">
+                            <img src="img/unicorn.jpg" alt="Unicorn, hand-colored copper engraving form children's picture book by Friedrich Justin Bertuch, Weimar, 1792">
+                            <figcaption>Friedrich Justin Bertuch, Weimar, 1792</figcaption>
+                        </figure>
+                    </section>
+
+                    <section>
+                        <p>No genes split across scaffolds</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Where are we now?</h3>
+                    </section>
+
+                    <section>
+                        <p>Flow chart of the assembly workflow</p>
+                    </section>
+
+                    <section>
+                        <p>Table of some statistics for the current assembly</p>
+                    </section>
+
+                    <section data-background-color="#FFFFFF">
+                        <figure class="stretch">
+                            <img src="img/illumina_global_coverage.png" alt="Illumina sequence coverage on the spruce contigs">
+                        </figure>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>One peak at about 50X coverage, which is to be expected (since this was the sequencing depth).</li>
+                                <li>Other peak at half coverage, which would be haplotypes that have not been collapsed.</li>
+                            </ul>
+                            <p>
+                            More than 10% of the genome without any coverage at all.
+                            </p>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>How do we know when enough is enough?</h3>
+                    </section>
+
+                    <section style="height: 50%;">
+                        <h3>BUSCO</h3>
+                        <p>Benchmarking Universal Single-Copy Orthologs</p>
+                        <div class="citation">
+                            <p>Simão <i>et al.</i> 2015, <a href="https://doi.org/10.1093/bioinformatics/btv351">10.1093/bioinformatics/btv351</a></p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>IsoSeq alignments</h3>
+                        <p>Full length mRNA sequencing</p>
+                    </section>
+                </section>
+
+                <section data-background-image="https://farm6.staticflickr.com/5690/21457742918_964178f889_o_d.jpg"
+                         data-background-opacity="0.2">
+                    <!-- Background photo: https://www.flickr.com/photos/befuddledsenses/21457742918/ -->
+                    <h3>Acknowledgements</h3>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between; align-items: center; font-size: 0.6em;">
+                        <div class="acknowledgement">
+                            <h4>Umeå</h4>
+                            <ul>
+                                <li>Nathaniel Street</li>
+                                <li>Ove Nilsson</li>
+                                <li>Harry Wu</li>
+                                <li>Nicolas Delhomme</li>
+                                <li>Bastian Schiffthaler</li>
+                                <li>Alexis Sullivan</li>
+                            </ul>
+                        </div>
+
+                        <div class="acknowledgement" style="width: 30%">
+                            <figure><img src="img/umu-logo-neg-EN.png" alt="Umeå University"></figure>
+                            <figure style="width: 40%;"><img src="img/slu_logo_vit.png" alt="SLU"></figure>
+                            <figure style="width: 30%;"><img src="img/upsc_logo.png" alt="UPSC"></figure>
+                        </div>
+
+                        <div class="acknowledgement">
+                            <figure>
+                                <img style="width: 10em;" src="img/scilifelab_green_white.png" alt="SciLifeLab">
+                            </figure>
+                            <ul>
+                                <li>Tomas Larsson</li>
+                                <li>Per Unneberg</li>
+                                <li>Manfred Grabherr</li>
+                                <li>Ignas Bunikis</li>
+                                <li>Remi-André Olsen</li>
+                                <li>Ellen Sherwood</li>
+                                <li>Ulf Gyllensten</li>
+                                <li>Björn Nystedt</li>
+                            </ul>
+                        </div>
+
+                        <div class="acknowledgement">
+                            <h4>Computing</h4>
+                            <ul>
+                                <li>UPPMAX</li>
+                                <li>SNIC</li>
+                            </ul>
+                        </div>
+
+                        <div class="acknowledgement">
+                            <h4>Funding</h4>
+                            <figure style="margin-top: 1em;">
+                                <img style="width: 10em;" src="img/kaw_logo_white.svg" alt="KAW">
+                            </figure>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
@@ -51,6 +359,7 @@
             // - https://github.com/hakimel/reveal.js#dependencies
             Reveal.initialize({
                 hash: true,
+                navigationMode: 'linear',
                 dependencies: [
                     { src: 'plugin/markdown/marked.js' },
                     { src: 'plugin/markdown/markdown.js' },
