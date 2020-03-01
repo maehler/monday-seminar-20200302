@@ -1,10 +1,15 @@
 .reveal .acknowledgement {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding-top: 20px;
 }
 
 .reveal .acknowledgement ul {
     list-style: none;
     margin: 0;
+    padding: 0;
 }
 
 .reveal figure.acknowledgement-fig {
@@ -15,7 +20,7 @@
 }
 
 .reveal figure {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
 }
 
@@ -34,9 +39,29 @@
     font-size: 0.8em;
 }
 
-.citation {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+.reveal .smaller {
+    font-size: 0.7em;
+}
+
+.reveal .tiny {
     font-size: 0.5em;
+}
+
+.citation {
+    float: right;
+    font-size: 0.5em;
+}
+
+.side-by-side-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.side-by-side-container.wrap {
+    flex-wrap: wrap;
+}
+
+.side-by-side-container.wrap div {
+    margin-bottom: 2em;
 }
