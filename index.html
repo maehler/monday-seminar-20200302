@@ -52,6 +52,9 @@
                         <img src="http://dna.cs.byu.edu/bio465/puzzle.png" alt="Genome assembly is a complex puzzle">
                         <aside class="notes">
                             <p>
+                            It is the process of recreating a genome sequence from relatively short fragments.
+                            </p>
+                            <p>
                             How these short fragments are obtained has changed over time, and the last 10-15 years there have been tremendous advancements in this area.
                             </p>
                         </aside>
@@ -126,6 +129,11 @@
                                 <figcaption><a href="https://twitter.com/olga_francino/status/1210924674856689665"><i class="fab fa-twitter"></i> @olga_francino</a></figcaption>
                             </figure>
                         </div>
+                        <aside class="notes">
+                            <p>
+                            If we go back to the puzzle analogy, short reads can be seen as a puzzle with a lot of small pieces, while long reads represents a puzzle with fewer, larger pieces.
+                            </p>
+                        </aside>
                     </section>
 
                     <section>
@@ -133,7 +141,15 @@
                             <img src="img/de_novo_assembly.svg" alt="Schematic figure of de-novo genome assembly">
                         </figure>
                         <aside class="notes">
-                            <p>How this is done in practice I will leave out for now</p>
+                            <p>This is an overview of the assembly process.</p>
+                            <ul>
+                                <li>Genomic DNA that we get sequencing reads from, with one of the technologies I mentioned earlier.</li>
+                                <li>Overlaps between these sequencing reads are then found.</li>
+                                <li>The consensus of the overlaps then result in longer contiguous sequences, or contigs.</li>
+                                <li>In cases where we are missing overlaps, gaps will be introduced.</li>
+                                <li>We can supplement this with longer reads that can span these gaps, or with linked reads that can help resolve these gaps.</li>
+                            </ul>
+                            <p>How this is done in practice I will leave out for now.</p>
                         </aside>
                     </section>
 
@@ -142,6 +158,16 @@
                         <figure>
                             <img src="img/n50.svg" alt="N50 explained">
                         </figure>
+                        <aside class="notes">
+                            <p>
+                            A very common metric for the contiguity of a genome assembly is the N50.
+                            It is the length at which all reads longer than this comprise half of the assembly.
+                            </p>
+                            <p>
+                            This has some flaws, and you can easily see that if we just merge a few of our contigs, we can raise the N50 substantially.
+                            We also need other metrics for assessing the quality of an assembly, but this is still one of the more common metrics that are used.
+                            </p>
+                        </aside>
                     </section>
                 </section>
 
@@ -186,6 +212,11 @@
                                 </ul>
                             </div>
                         </div>
+                        <aside class="notes">
+                            <p>
+                            I will base most of my talk on spruce since this is where we've made the most progress.
+                            </p>
+                        </aside>
                     </section>
 
                     <section>
@@ -202,6 +233,11 @@
                                 <li>12 chromosomes</li>
                             </ul>
                         </div>
+                        <aside class="notes">
+                            <p>
+                            This is mostly uncharted territory.
+                            </p>
+                        </aside>
                     </section>
                 </section>
 
@@ -243,6 +279,14 @@
                         <figure class="stretch">
                             <img src="img/breeding_cycle.svg" alt="Spruce breeding cycle">
                         </figure>
+                        <aside class="notes">
+                            <p>
+                            The traditional way of doing this is by traditional breeding.
+                            For trees this is however a very long process.
+                            This is a typical breeding scheme for Norway spruce, and in order to complete a full breeding cycle we would need 20-30 years.
+                            If we consider traits such as drought tolerance, it might be that we don't have enough time to adapt these trees to a changing climate.
+                            </p>
+                        </aside>
                     </section>
 
                     <section data-background-image="img/gudrun_logs.png"
@@ -307,12 +351,19 @@
                             </div>
                         </div>
                         <aside class="notes">
+                            <p>
+                            In order to achieve these goals, we have obtained a diverse set of data for these two species.
+                            </p>
                             <ul>
                                 <li>Pacbio: long read sequencing</li>
                                 <li>Illumina: short read sequencing</li>
                                 <li>10X Chromium: linked reads</li>
                                 <li>Hi-C: chromosome conformation capture &rarr; contact maps</li>
                             </ul>
+                            <p>
+                            The genotyped population will help to set up a system for genomic selection where we ideally won't have to wait for a tree to grow in order to phenotype it.
+                            Instead we should be able to predict the phenotype based on genomic markers, and thereby significantly reducing the time for a single breeding cycle.
+                            </p>
                         </aside>
                     </section>
                 </section>
@@ -454,6 +505,12 @@
                         <figure class="stretch">
                             <img src="img/data_flowchart.svg" alt="Assembly workflow flowchart">
                         </figure>
+                        <aside class="notes">
+                            <p>
+                            We are currently working on polishing the assembly that we have.
+                            In parallel with this we are also looking into the IsoSeq alignments, as well as the scaffolding with Hi-C.
+                            </p>
+                        </aside>
                     </section>
 
                     <section>
@@ -505,6 +562,7 @@
 
                         <aside class="notes">
                             <ul>
+                                <li>Rightmost peak is everything with more than 125X coverage. These could be things like high copy number sequences, such as ribosomal RNAs.</li>
                                 <li>One peak at about 50X coverage, which is to be expected (since this was the sequencing depth).</li>
                                 <li>Other peak at half coverage, which would be haplotypes that have not been collapsed.</li>
                             </ul>
